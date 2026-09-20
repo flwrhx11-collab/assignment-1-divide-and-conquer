@@ -17,7 +17,7 @@ This project implements and analyzes four classic Divide-and-Conquer algorithms 
 ### 2. QuickSort
 - **How it works**: Selects a random pivot, partitions the array in-place, and recurses on the smaller partition first while iterating over the larger partition to bound stack depth.
 - **Complexity**: Average Time $O(n \log n)$, Worst-case Time $O(n^2)$, Auxiliary Space $O(\log n)$.
-- **Recurrence**: Average $T(n) = 2T(n/2) + \Theta(n) \implies O(n \log n)$.
+- **Recurrenceл**: Average $T(n) = 2T(n/2) + \Theta(n) \implies O(n \log n)$.
 
 ### 3. Deterministic Select (Median-of-Medians)
 - **How it works**: Groups elements into 5s, finds medians of each group, recursively finds the median of medians as a pivot, partitions in-place, and recurses only into the target partition.
