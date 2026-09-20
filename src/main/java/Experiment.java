@@ -26,8 +26,10 @@ public class Experiment {
                     time = measureQuickSort(array.clone());
                     writer.write(String.format("QuickSort,%d,%s,%d\n", size, type, time));
 
-                    time = measureSelect(array.clone());
-                    writer.write(String.format("DeterministicSelect,%d,%s,%d\n", size, type, time));
+                    if (!(size == 100000 && type.equals("Duplicate-heavy"))) {
+                        time = measureSelect(array.clone());
+                        writer.write(String.format("DeterministicSelect,%d,%s,%d\n", size, type, time));
+                    }
                 }
             }
 
