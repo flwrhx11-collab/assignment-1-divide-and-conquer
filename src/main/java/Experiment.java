@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -7,7 +8,12 @@ public class Experiment {
     private static final String[] TYPES = {"Random", "Sorted", "Reverse-sorted", "Duplicate-heavy"};
 
     public static void runExperiments() {
-        try (FileWriter writer = new FileWriter("results/results.csv")) {
+        File resultsDir = new File("results");
+        if (!resultsDir.exists()) {
+            resultsDir.mkdirs();
+        }
+
+        try (FileWriter writer = new FileWriter(new File(resultsDir, "results.csv"))) {
             writer.write("Algorithm,InputSize,InputType,Time_ns\n");
 
             for (int size : SIZES) {
@@ -30,7 +36,7 @@ public class Experiment {
                 long startTime = System.nanoTime();
                 ClosestPairSolver.findClosestPair(points);
                 long endTime = System.nanoTime();
-                writer.write(String.format("ClosestPair,%d,Random,%d\n", size, "Random", endTime - startTime));
+                writer.write(String.format("ClosestPair,%d,Random,%d\n", size, endTime - startTime));
             }
 
         } catch (IOException e) {
